@@ -1,0 +1,180 @@
+//@Author:Husen, H
+//@Since: January 19th, 2022
+//@Title: Summative Pizza Virtual Delivery code
+import java.util.Scanner; //import java scanner class
+class Main {
+  public static void main(String[] args) { Scanner userIn=new Scanner(System.in); 
+  boolean x=true; //setting up a boolean variable as true to use for my loop
+String size=" "; //declearing 4 string/ int variables outside my loop so that they could be accessed later 
+String toppings=" ";
+String side= " ";
+String drink=" ";
+int chsize=0; //ch stands for choice
+int chtopp=0;
+int chside=0;
+int chdrink=0;
+
+
+
+  while(x) {  //Starting my loop.I want all my questions to be apart of the loop as I want to loop to the first question.  
+    
+
+  System.out.println("Welcome to Hamza's Pizza Palace. Ordering on this platform gets you 1 free garlic dip! To start, what size pizza do you want? "); //first question asking the size of the pizza
+   try { //Starting my try and catch. try the code below and catch an exception e(all exceptions)
+  System.out.println( "Type 1 for Small ($6), 2 for Medium($8), 3 for Large($10) and 4 for X large ($12)"); // each number coorisponds with an item. The user can pick their desired choice by pressing the number associated with the item
+
+ chsize=userIn.nextInt(); //user input for choice size based on the number they typed. 
+if(chsize<1 || chsize>4) {
+  System.out.println("Error. Try again"); //If the user types in a number that's not a item choice (1-4), the program will display an error message and loop back to the beginning 
+  continue; }
+
+  
+switch (chsize) { //Using switch statements to make decisions based on the user input for size. Based on their input, the string size will store a certain string. This is useful to me as I can use this infomation to print out the final reciept with the names of the items just by printing the variable 
+  case 1: size="Small"; //if the user input is 1, the string small is stored in the size string variable
+  break;  //break the switch statement so it doesn't interfer with the other cases
+  case 2: size="Medium";//if the user input is 2, the string medium is stored in the size string variable
+  break;
+  case 3: size="Large";//if the user input is 3, the string large is stored in the size string variable
+  break;
+  case 4: size= "X Large";//if the user input is 4, the string x large is stored in the size string variable 
+  break;
+}
+  System.out.println("Now for toppings! Type 1 for Meat lovers($8.50), 2 for Veggie ($5.50), 3 for Extra Cheese ($3.25) and 4 for no toppings"); //question asking about toppings
+   chtopp=userIn.nextInt(); //user input for choice toppings
+if(chtopp<1 || chtopp>4) {
+  System.out.println("Error. Please try again."); //This will display an error message if the value is greater than 4 or less than 1 for toppings. It will then loop to the beginning if those condiions are met. 
+  continue; }
+switch(chtopp) { 
+   case 1: toppings="MeatLovers Pizza "; //If the user input is 1, the string Meatlovers Pizza is stored in the topping string variable
+  
+break; //break to end this case
+case 2: toppings="Veggie Pizza "; //if the user input is 2, the string Veggie Pizza is stored in the topping string variable 
+break;
+case 3: toppings="Extra Cheese"; //if the user input is 3, the string Extra Cheese Pizza is stored in the topping string variable. 
+break;
+case 4: toppings="Cheese Pizza"; //if the user input is 4, the string cheese pizza will be stored to the topping string variable
+break;
+}
+
+System.out.println("Now sides. Press 1 for french fries($4.50), press 2 for potato wedges($3) , 3 for breadsticks($6.50) and 4 for no sides. "); //question asking which sides the user wants
+ chside=userIn.nextInt(); //the input being stored in the choice side variable 
+if(chside<1 || chside>4) {
+  System.out.println("Error. Please try again."); //if the user types in a value greater than 4 or less than 1, an error will pop up and the program will loop back to the beginning 
+  continue;
+}
+switch(chside) {
+  case 1: side="Fries"; //if the user input is 1, the string fries will be stored in the side string variable
+  break; //break to end this case
+  case 2:side="Potato Wedges"; //if the user input is 2, the string potato wedges will be stored in the side string variable 
+  break;
+  case 3: side=" Breadsticks"; //if the user input is 3, the string Breadsticks will be stored in the side string variable
+  break;
+  case 4: side="No sides";  //if the user input is 4, the string no sides will be stored in the side string variable
+  break;}
+
+  System.out.println("Lastly drinks. Press 1 for a can of soda ($1.50), 2 for a bottle of juice ($2.25), 3 for a sports drink ($3.25) and 4 for no drink "); //question asking the user about their desired drink choice
+
+  chdrink=userIn.nextInt(); //the input being stored in the choice drink variable 
+if(chdrink<1 || chdrink>4) {
+  System.out.println("Error"); //a value less than 1 but greater than 4 will display error and loop 
+  continue;
+}
+  switch(chdrink) {
+    case 1: drink="Soda"; //if the user input is 1, the string soda will be stored in the drink string variable 
+    break;
+    case 2: drink="Juice"; //if the user input is 2, the string juice will be stored in the drink string variable 
+    break;
+    case 3: drink="Sports Drink"; //if the user input is 3, the string sports drink will be stored in the drink string variable 
+    break;
+    case 4: drink="No drink"; //if the user input is 4, the string no drink will be stored in the drink variable 
+    break;
+  }
+  System.out.println("Great! Did you make a mistake and wish to repeat from the beginning? Press 1 for yes and press 2 for no."); //This question will prompt the user to make a decision to repeat the ordering process. 
+  int choice=userIn.nextInt(); //users choice
+  if(choice==1) {
+    x=true; //if the user entered 1, the boolean x is true. This will make the program loop back to the beginning of the loop. 
+  }
+  else if(choice==2) {
+    x=false; //if the user enters 2, the program will exit the loop and continue with the code below
+  }
+  }
+  catch(Exception e) {   
+System.out.println("Error."); //this catch statement is for all the user inputs. Exception e makes the code accept all exceptions. If an exception is caught, the program will print out "error" to the user and restart the loop. 
+x=true;
+userIn.nextLine(); //this is a bug in java that prevents the code from infinitly looping
+
+
+  
+  
+  }
+
+  
+  }
+  System.out.println("Thank you for choosing Hamza's Pizza Palace! Your order reciept:  \n Size: " +size+ " \n toppings: " +toppings+ "\n Side: " +side+ "\n Drink: " +drink ); //The users reciept. This is the items they ordered
+System.out.println(" \n---------------------------------\n Subtotal\t\t\t\t$" +Math.round(DoCalc(chsize, chtopp, chside, chdrink)/1.13*100.0)/100.0+ " \n HST\t\t\t\t\t (13%)\n Total \t\t\t\t\t$"+ DoCalc(chsize, chtopp, chside, chdrink));
+} //the users calculated subtotal(dividing the total by 1.13), hst percentage and total. 
+public static double DoCalc (int Size, int Toppings, int  Side, int Drink ) //The method signature including the access modifier, the return type (double) and the parameter list. 
+{  
+    double total=0; //initializing total as 0
+   double sizePrice=0; //intializing sizePrice as 0
+    if(Size==1){ //if the user input for size , which is now int size is 1, add 6 to sizePrice
+    sizePrice=+6.0; }
+    else if(Size==2) { //if int size is 2, add 8
+      sizePrice=+8.0; }
+    else if(Size==3) { //if int size is 3, add 10
+        sizePrice=+10.0;
+      }
+    else if(Size==4) { //if int size is 4, add 12
+      sizePrice=+12.0; }
+    double toppPrice=0;
+    if(Toppings==1) { //if the user input for toppings, which is now int toppings is 1, add 8.50 to toppPrice
+     toppPrice=+8.50;
+    }
+    else if(Toppings==2) { //if int toppings is 2, add 5.50 to toppPrice
+      toppPrice=+5.50;
+    }
+    else if(Toppings==3) { //if int toppings is 3, add 3.25 to toppPrice
+      toppPrice=+3.25;
+    }
+    else if(Toppings==4) { //if int toppings is 4, add 0 to toppPrice
+      toppPrice=0;
+    }
+    double sidePrice=0; //intitalizing side as 0
+    if(Side==1) { //if the user input for side, which is now int Side is 1, add 4.50 to sidePrice
+      sidePrice=+4.50;
+    }
+    else if (Side==2) { //if int side is 2, add 3.0 to sidePrice
+      sidePrice=+3.0;
+    }
+    else if(Side==3) { //if int side is 3, add 6.50 to sidePrice
+      sidePrice=+6.50;
+    }
+    else if(Side==4) { //if int side is 4, add 0 to sidePrice
+      sidePrice=+0;
+    }
+    double drinkPrice=0; //initialize drinkPrice as 0
+    if(Drink==1) { //if the user input for drink, which is now int drink is 1, add 1.50 to drinkPrice
+      drinkPrice=+1.50;
+    }
+    else if(Drink==2) {//if int drink is 2, add 2.25 to drinkPrice
+      drinkPrice=+2.25;
+    }
+    else if(Drink==3) { //if int drink is 3, add 3.25 to drinkPrice
+  drinkPrice=+3.25;
+} 
+    else if (Drink==4) { //if int drink is 4, add 0 to drinkPrice
+  drinkPrice=+0;
+}
+
+    total=sizePrice+toppPrice+sidePrice+drinkPrice; //here, it can calculate the total by adding all the prices of the items together
+
+    double totalTax=total*1.13; //to get the total with tax, multiply that variable by 1.13
+    double finalTax=Math.round(totalTax*100.0)/100.0; //round that number to 2 decimal places by using the Math.round function created by java
+    return finalTax;//return that final double value back to the main method, where this method will be called
+      }
+    
+
+
+
+    }
+  
